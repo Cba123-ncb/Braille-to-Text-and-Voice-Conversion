@@ -1,0 +1,170 @@
+{
+    "shapes": [
+        {
+            "label": "h",
+            "points": [
+                [
+                    36.665457473754884,
+                    47.950260986328125
+                ],
+                [
+                    76.25113226318359,
+                    117.80708952331543
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "e",
+            "points": [
+                [
+                    103.73703439966837,
+                    47.38597982788086
+                ],
+                [
+                    142.8197435544332,
+                    117.13423257573444
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "l",
+            "points": [
+                [
+                    168.38973628997803,
+                    48.86253440856933
+                ],
+                [
+                    207.16415775299072,
+                    118.62079176584881
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "l",
+            "points": [
+                [
+                    239.99575459798177,
+                    47.3970725726732
+                ],
+                [
+                    279.08687174479167,
+                    117.70834322290106
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "o",
+            "points": [
+                [
+                    308.7052348836263,
+                    47.372315368652345
+                ],
+                [
+                    347.7963520304362,
+                    117.6835860188802
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "w",
+            "points": [
+                [
+                    420.2851909383138,
+                    47.33211119704168
+                ],
+                [
+                    459.3763080851237,
+                    117.64338184726954
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "o",
+            "points": [
+                [
+                    486.0426830037435,
+                    47.30841764499913
+                ],
+                [
+                    525.1338001505534,
+                    117.619688295227
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "r",
+            "points": [
+                [
+                    552.2445415242513,
+                    47.28456398010254
+                ],
+                [
+                    591.3356586710612,
+                    117.5958346303304
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "l",
+            "points": [
+                [
+                    620.3286479695638,
+                    47.26003210900067
+                ],
+                [
+                    659.4197651163737,
+                    117.57130275922853
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        },
+        {
+            "label": "d",
+            "points": [
+                [
+                    689.2348796170553,
+                    49.83378630065918
+                ],
+                [
+                    728.8730305391947,
+                    118.05166725540161
+                ]
+            ],
+            "shape_type": "rectangle",
+            "line_color": null,
+            "fill_color": null
+        }
+    ],
+    "imageHeight": 192,
+    "imageWidth": 800,
+    "imagePath": "1a8eeff11b95485aa624f75a377b05fa.labeled.jpg",
+    "imageData": null,
+    "lineColor": null,
+    "fillColor": null
+}

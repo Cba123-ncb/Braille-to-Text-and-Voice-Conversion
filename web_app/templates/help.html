@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-main">
+    <div class="text-center mb-5">
+        <h1 class="hero-title" style="font-size: 2.5rem;">
+            <i class="fas fa-question-circle me-3"></i>How to Use Braille Reader
+        </h1>
+        <p class="hero-subtitle">Learn how to take perfect photos for accurate Braille recognition</p>
+    </div>
+
+    <!-- Photography Guidelines -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-camera me-2 text-success"></i>Photography Guidelines
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        <strong>Key Requirements:</strong> Take photos in lighting that creates contrast between Braille dots and shadows. Light should come from the front or behind you, not from above.
+                    </div>
+                    
+                    <div class="row g-4 mt-3">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <img src="/static/correct_light.png" class="img-fluid rounded shadow-sm mb-3" alt="Correct lighting">
+                                <div class="badge bg-success mb-2">
+                                    <i class="fas fa-check me-1"></i>Correct
+                                </div>
+                                <p class="text-muted small">Proper front lighting creates good contrast</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <img src="/static/wrong_light.png" class="img-fluid rounded shadow-sm mb-3" alt="Wrong lighting">
+                                <div class="badge bg-danger mb-2">
+                                    <i class="fas fa-times me-1"></i>Incorrect
+                                </div>
+                                <p class="text-muted small">Light from above, side, or behind creates poor contrast</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <img src="/static/wrong_position.png" class="img-fluid rounded shadow-sm mb-3" alt="Wrong angle">
+                                <div class="badge bg-danger mb-2">
+                                    <i class="fas fa-times me-1"></i>Incorrect
+                                </div>
+                                <p class="text-muted small">Must photograph from directly above</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h5><i class="fas fa-list-ul me-2"></i>Additional Tips:</h5>
+                        <ul class="list-unstyled mt-3">
+                            <li class="mb-2">
+                                <i class="fas fa-expand-arrows-alt text-primary me-2"></i>
+                                <strong>Resolution:</strong> Minimum 1000 pixels in both directions (most phones meet this requirement)
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-align-center text-primary me-2"></i>
+                                <strong>Position:</strong> Photograph the page from directly above
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-sun text-primary me-2"></i>
+                                <strong>Lighting:</strong> Avoid side lighting - use front or back lighting
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Start -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+                <div class="card-body text-center p-5">
+                    <h3 class="card-title fw-bold mb-3">
+                        <i class="fas fa-rocket me-2"></i>Ready to Get Started?
+                    </h3>
+                    <p class="card-text mb-4">Follow these guidelines and start recognizing Braille text now!</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-upload me-2"></i>Upload Your First Image
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

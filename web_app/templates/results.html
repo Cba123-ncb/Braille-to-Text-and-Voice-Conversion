@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-main">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-check-circle me-2"></i>Recognition Complete
+        </h2>
+        <p class="text-muted">Your Braille text has been successfully converted to digital format</p>
+    </div>
+
+    {% for image_path, text in image_paths_and_texts %}
+    <div class="row mb-5">
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-image me-2 text-primary"></i>Processed Image
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="position-relative">
+                        <img src="{{image_path}}" 
+                             alt="Recognized Braille image" 
+                             class="img-fluid w-100"
+                             style="border-radius: 0 0 var(--border-radius) var(--border-radius);">
+                        <div class="position-absolute top-0 end-0 m-3">
+                            <span class="badge bg-success">
+                                <i class="fas fa-eye me-1"></i>Analyzed
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0">
+                        <i class="fas fa-font me-2 text-success"></i>Recognized Text
+                    </h5>
+                    <div class="d-flex gap-2">
+                        <button onclick="copyToClipboard()" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-copy me-1"></i>Copy
+                        </button>
+                        <button onclick="playText()" class="btn btn-outline-success btn-sm" id="playButton">
+                            <i class="fas fa-play me-1"></i>Play
+                        </button>
+                        <button onclick="stopText()" class="btn btn-outline-warning btn-sm" id="stopButton" style="display:none;">
+                            <i class="fas fa-stop me-1"></i>Stop
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <textarea class="form-control border-0" 
+                              rows="12" 
+                              readonly 
+                              style="resize: none; font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.5;"
+                              id="recognizedText">{{ text }}</textarea>
+                </div>
+                <div class="card-footer bg-light text-muted">
+                    <small>
+                        <i class="fas fa-info-circle me-1"></i>
+                        Characters: {{ text|length }} | Words: {{ text.split()|length }}
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+                <div class="card-body text-center p-4">
+                    <h5 class="card-title fw-bold mb-3">
+                        <i class="fas fa-plus-circle me-2"></i>Process Another Image
+                    </h5>
+                    <p class="card-text mb-3">Ready to recognize more Braille text?</p>
+                    <a href="{{ url_for('index') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-upload me-2"></i>Upload New Image
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard() {
+    var textarea = document.getElementById("recognizedText");
+    textarea.select();
+    navigator.clipboard.writeText(textarea.value).then(function() {
+        // Create a temporary success message
+        const copyBtn = document.querySelector('[onclick="copyToClipboard()"]');
+        const originalHTML = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
+        copyBtn.classList.remove('btn-outline-secondary');
+        copyBtn.classList.add('btn-success');
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalHTML;
+            copyBtn.classList.remove('btn-success');
+            copyBtn.classList.add('btn-outline-secondary');
+        }, 2000);
+    }).catch(function() {
+        // Fallback for older browsers
+        textarea.select();
+        document.execCommand('copy');
+        alert('Text copied to clipboard!');
+    });
+}
+
+let speechSynthesis = window.speechSynthesis;
+let currentUtterance = null;
+
+function playText() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+    }
+    
+    var text = document.getElementById("recognizedText").value;
+    if (!text.trim()) {
+        alert('No text to play!');
+        return;
+    }
+    
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = 'en-US';
+    currentUtterance.rate = 0.8;
+    currentUtterance.pitch = 1;
+    currentUtterance.volume = 1;
+    
+    const playBtn = document.getElementById('playButton');
+    const stopBtn = document.getElementById('stopButton');
+    
+    currentUtterance.onstart = function() {
+        playBtn.style.display = 'none';
+        stopBtn.style.display = 'inline-block';
+    };
+    
+    currentUtterance.onend = function() {
+        playBtn.style.display = 'inline-block';
+        stopBtn.style.display = 'none';
+    };
+    
+    currentUtterance.onerror = function() {
+        alert('Text-to-speech error occurred!');
+        playBtn.style.display = 'inline-block';
+        stopBtn.style.display = 'none';
+    };
+    
+    speechSynthesis.speak(currentUtterance);
+}
+
+function stopText() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+    }
+    document.getElementById('playButton').style.display = 'inline-block';
+    document.getElementById('stopButton').style.display = 'none';
+}
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+services:
+  braille-reader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: braille-reader:latest
+    container_name: braille-reader
+    ports:
+      - "5001:5001"
+    restart: unless-stopped
+    environment:
+      - SECRET_KEY=change-me-in-production
+    # Persist uploaded files and results across container restarts
+    volumes:
+      - braille_data:/app/web_app/static/data
+    # Memory recommendation: model inference needs ~2 GB
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+
+volumes:
+  braille_data:

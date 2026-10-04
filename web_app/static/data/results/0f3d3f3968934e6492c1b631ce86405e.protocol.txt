@@ -1,0 +1,43 @@
+{
+    "ver": "20200816",
+    "best_idx": 0,
+    "err_scores": [
+        [
+            0.0007508147391490638,
+            0.001368102733977139,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        [
+            2554.05078125,
+            2075.982177734375,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            0.9183697700500488,
+            1.8415250778198242,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ]
+    ],
+    "homography": null,
+    "model_weights": "D:\\Projects\\BrailleReader\\weights\\model.t7",
+    "user": "4775972b-7864-48fe-9e7a-60dca7169dcb",
+    "has_public_confirm": false,
+    "lang": "EN",
+    "find_orientation": true,
+    "process_2_sides": false
+}
